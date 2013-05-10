@@ -3,16 +3,25 @@
         <title>Testing Fartscroll.js</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="fartscroll.js"></script>
+        <script>var yourBrowserSuperBlows = false;</script>
+        <!--[if lte IE 7]>
+        <script>yourBrowserSuperBlows = true;</script>
+        <![endif]-->
         <script>
         $(document).ready(function() {
-            // Ensure the page always has more scrolling
-            $(document).scroll(function() {
-                while ((window.pageYOffset + window.innerHeight) >= $(this).height() - (window.innerHeight / 2)) {
-                    $('ul').append('<li>Testing.</li>');
-                }
-            }).scroll();
-
-            fartscroll(800);
+        
+	        // you're using IE7 or lower? So sorry for you.	        
+	        if(yourBrowserSuperBlows === true){
+            
+	            // Ensure the page always has more scrolling
+	            $(document).scroll(function() {
+	                while ((window.pageYOffset + window.innerHeight) >= $(this).height() - (window.innerHeight / 2)) {
+	                    $('ul').append('<li>Testing.</li>');
+	                }
+	            }).scroll();
+            
+	            fartscroll(800);
+            }
         });
         </script>
     </head>
